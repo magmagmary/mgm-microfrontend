@@ -1,3 +1,5 @@
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+
 const config = {
     mode:'development',
     entry: './src/index.ts',
@@ -15,7 +17,15 @@ const config = {
     },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
-      },
+    },
+    devServer: {
+        port: 7001,
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './public/index.html',
+        }),
+    ],
 
 }
 
