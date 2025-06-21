@@ -29,10 +29,10 @@ const config = {
             hash: true,
         }),
         new webpack.container.ModuleFederationPlugin({
-            name: 'products',
+            name: 'cart',
             filename: 'remoteEntry.js',
             exposes: {
-                './ProductsIndex': './src/index.ts',
+                './cartIndex': './src/index.ts',
             },
         })
     ],

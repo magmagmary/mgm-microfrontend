@@ -31,6 +31,7 @@ const config = {
             name: 'container',
             remotes: {
                 products: 'products@http://localhost:8001/remoteEntry.js',
+                cart: 'cart@http://localhost:8002/remoteEntry.js',
             },
         }),
     ],
