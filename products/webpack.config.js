@@ -34,6 +34,7 @@ const config = {
             exposes: {
                 './ProductsIndex': './src/index.ts',
             },
+            shared: ['@faker-js/faker'],
         })
     ],
 

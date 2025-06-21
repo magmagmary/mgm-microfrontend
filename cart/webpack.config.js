@@ -34,6 +34,7 @@ const config = {
             exposes: {
                 './cartIndex': './src/index.ts',
             },
+            shared: ['@faker-js/faker'],
         })
     ],
 
