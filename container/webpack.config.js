@@ -1,4 +1,5 @@
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import webpack from 'webpack';
 
 const config = {
     mode:'development',
@@ -25,6 +26,12 @@ const config = {
         new HtmlWebpackPlugin({
             template: './public/index.html',
             hash: true,
+        }),
+        new webpack.container.ModuleFederationPlugin({
+            name: 'container',
+            remotes: {
+                products: 'products@http://localhost:8001/remoteEntry.js',
+            },
         }),
     ],
 

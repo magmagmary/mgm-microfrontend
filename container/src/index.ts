@@ -1,1 +1,1 @@
-console.log("Container App")
+import('./bootstrap');
