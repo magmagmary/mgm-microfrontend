@@ -19,7 +19,7 @@ const config = {
         extensions: ['.tsx', '.ts', '.js'],
     },
     devServer: {
-        port: 8001,
+        port: 8000,
     },
     plugins: [
         new HtmlWebpackPlugin({
