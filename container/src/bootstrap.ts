@@ -1,8 +1,14 @@
-import {mount} from 'products/ProductsIndex';
-import 'cart/cartIndex';
+import {mount as mountProducts} from 'products/ProductsIndex';
+import {mount as mountCart} from 'cart/cartIndex';
 
 const productsContainer = document.getElementById('Products');
 
 if(productsContainer) {
-    mount(productsContainer);
+    mountProducts(productsContainer);
+}
+
+const cartContainer = document.getElementById('Cart');
+
+if(cartContainer) {
+    mountCart(cartContainer);
 }

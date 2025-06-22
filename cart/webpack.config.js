@@ -32,7 +32,7 @@ const config = {
             name: 'cart',
             filename: 'remoteEntry.js',
             exposes: {
-                './cartIndex': './src/index.ts',
+                './cartIndex': './src/bootstrap.ts',
             },
             shared: ['@faker-js/faker'],
         })
