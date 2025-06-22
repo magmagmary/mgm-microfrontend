@@ -1,0 +1,3 @@
+declare module 'products/ProductsIndex' {
+    export function mount(el: HTMLElement): void;
+}

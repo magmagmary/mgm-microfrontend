@@ -32,7 +32,7 @@ const config = {
             name: 'products',
             filename: 'remoteEntry.js',
             exposes: {
-                './ProductsIndex': './src/index.ts',
+                './ProductsIndex': './src/bootstrap.ts',
             },
             shared: ['@faker-js/faker'],
         })

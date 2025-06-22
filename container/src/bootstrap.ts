@@ -1,4 +1,8 @@
-import 'products/ProductsIndex';
+import {mount} from 'products/ProductsIndex';
 import 'cart/cartIndex';
 
-console.log("Container App")
+const productsContainer = document.getElementById('Products');
+
+if(productsContainer) {
+    mount(productsContainer);
+}
