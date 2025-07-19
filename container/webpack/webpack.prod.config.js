@@ -9,6 +9,7 @@ const config ={
     mode:'production',
     output: {
         filename: '[name].[contenthash].js',  
+        publicPath: '/container/latest/'
     },
     plugins: [
         new webpack.container.ModuleFederationPlugin({
