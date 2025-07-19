@@ -23,13 +23,16 @@
       "noPropertyAccessFromIndexSignature": true,
       "noUncheckedIndexedAccess": true,
       
-      // Module resolution
-      "allowSyntheticDefaultImports": true,
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": true,
-      "isolatedModules": true,
-      "resolveJsonModule": true,
-      "skipLibCheck": true,
+             // Module resolution
+       "allowSyntheticDefaultImports": true,
+       "esModuleInterop": true,
+       "forceConsistentCasingInFileNames": true,
+       "isolatedModules": true,
+       "resolveJsonModule": true,
+       "skipLibCheck": true,
+       
+       // JSX configuration
+       "jsx": "react-jsx",
       
       // Emit configuration
       "declaration": true,
