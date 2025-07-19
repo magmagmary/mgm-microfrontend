@@ -1,9 +1,7 @@
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 
 const config = {
     entry: './src/index.ts',
-    output: {
-        filename: 'bundle.js',  
-    },
     module:{
         rules: [
             {
@@ -29,6 +27,12 @@ const config = {
             },
           ],
     },
+    plugins: [
+        new HtmlWebpackPlugin({
+            template: './public/index.html',
+            hash: true,
+        }),
+    ],
     resolve: {
         extensions: ['.tsx', '.ts', '.js' , '.jsx'],
     },
