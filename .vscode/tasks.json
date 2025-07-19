@@ -1,0 +1,11 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "run all start commands",
+        "type": "shell",
+        "command": "cd Shop/marketing && npm run start & cd ../container && npm run start",
+        "group": "build"
+      }
+    ]
+  }
