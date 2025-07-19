@@ -25,7 +25,7 @@ jobs:
         run: npm run build
 
       - name: check aws credentials
-        run: echo ${{ secrets.AWS_ACCESS_KEY_ID }}
+        run: echo ${{ secrets.AWS_S3_BUCKET_NAME }}
 
       - name: aws cli
         uses: shinyinc/action-aws-cli@v1.2
