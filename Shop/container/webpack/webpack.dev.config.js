@@ -22,6 +22,7 @@ const config ={
             remotes: {
                 marketing: 'marketing@http://localhost:8001/remoteEntry.js',
             },
+            shared: ['react', 'react-dom'],
         }),
     ],
 };

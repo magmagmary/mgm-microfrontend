@@ -23,6 +23,7 @@ const config ={
             exposes: {
                 './MarketingApp': './src/bootstrap.tsx',
             },
+            shared: ['react', 'react-dom'],
         }),
     ],
 };
