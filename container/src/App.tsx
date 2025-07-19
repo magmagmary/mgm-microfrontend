@@ -1,15 +1,27 @@
-import { RouterProvider } from "react-router-dom";
+import { Outlet, RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import Marketing from "./components/Marketing";
+import Header from "./components/Header";
 
-const router = createBrowserRouter([{ path: "/", element: <Marketing /> }]);
+const router = createBrowserRouter([
+  {
+    element: (
+      <div className="w-svw">
+        <Header signedIn={false} />
+        <Outlet />
+      </div>
+    ),
+    children: [
+      {
+        path: "/",
+        element: <Marketing />,
+      },
+    ],
+  },
+]);
 
 const App = () => {
-  return (
-    <div className="container">
-      <RouterProvider router={router} />
-    </div>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
