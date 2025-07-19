@@ -5,7 +5,11 @@ import Marketing from "./components/Marketing";
 const router = createBrowserRouter([{ path: "/", element: <Marketing /> }]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  return (
+    <div className="container">
+      <RouterProvider router={router} />
+    </div>
+  );
 };
 
 export default App;
