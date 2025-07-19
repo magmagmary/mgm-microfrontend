@@ -16,7 +16,7 @@ const config ={
         new webpack.container.ModuleFederationPlugin({
             name: 'container',
             remotes: {
-                marketing: `marketing@${process.env.PRODUCTION_DOMAIN}/marketing/latest/remoteEntry.js`,
+                marketing: `marketing@https://d1pxtahmghngvr.cloudfront.net/marketing/latest/remoteEntry.js`,
             },
             shared: packageJson.dependencies,
         }),
