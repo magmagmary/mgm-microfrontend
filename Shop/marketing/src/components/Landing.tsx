@@ -1,166 +1,97 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
-import MaterialLink from '@material-ui/core/Link';
-import { Link } from 'react-router-dom';
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <MaterialLink component={Link} to="/" color="inherit">
-        Your Website
-      </MaterialLink>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  '@global': {
-    a: {
-      textDecoration: 'none',
-    },
-  },
-  icon: {
-    marginRight: theme.spacing(2),
-  },
-  heroContent: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(8, 0, 6),
-  },
-  heroButtons: {
-    marginTop: theme.spacing(4),
-  },
-  cardGrid: {
-    paddingTop: theme.spacing(8),
-    paddingBottom: theme.spacing(8),
-  },
-  card: {
-    height: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-  cardMedia: {
-    paddingTop: '56.25%', // 16:9
-  },
-  cardContent: {
-    flexGrow: 1,
-  },
-  footer: {
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(6),
-  },
-}));
+import React from "react";
+import { Link } from "react-router-dom";
+import Copyright from "./Copyright";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function Album() {
-  const classes = useStyles();
-
   return (
     <React.Fragment>
       <main>
         {/* Hero unit */}
-        <div className={classes.heroContent}>
-          <Container maxWidth="sm">
-            <Typography
-              component="h1"
-              variant="h2"
-              align="center"
-              color="textPrimary"
-              gutterBottom
-            >
+        <div className="bg-white py-16 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl">
               Home Page
-            </Typography>
-            <Typography
-              variant="h5"
-              align="center"
-              color="textSecondary"
-              paragraph
-            >
+            </h1>
+            <p className="mt-3 max-w-md mx-auto text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
               Something short and leading about the collection below—its
               contents, the creator, etc. Make it short and sweet, but not too
               short so folks don&apos;t simply skip over it entirely.
-            </Typography>
-            <div className={classes.heroButtons}>
-              <Grid container spacing={2} justifyContent="center">
-                <Grid item>
-                  <Link to="/pricing">
-                    <Button variant="contained" color="primary">
-                      Pricing
-                    </Button>
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Link to="/pricing">
-                    <Button variant="outlined" color="primary">
-                      Pricing
-                    </Button>
-                  </Link>
-                </Grid>
-              </Grid>
+            </p>
+            <div className="mt-5 max-w-md mx-auto sm:flex sm:justify-center md:mt-8">
+              <div className="rounded-md shadow">
+                <Link
+                  to="/pricing"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                >
+                  Pricing
+                </Link>
+              </div>
+              <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
+                <Link
+                  to="/pricing"
+                  className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+                >
+                  Pricing
+                </Link>
+              </div>
             </div>
-          </Container>
+          </div>
         </div>
-        <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
-          <Grid container spacing={4}>
+
+        {/* Card Grid */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {cards.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={4}>
-                <Card className={classes.card}>
-                  <CardMedia
-                    className={classes.cardMedia}
-                    image="https://source.unsplash.com/random"
-                    title="Image title"
+              <div
+                key={card}
+                className="bg-white overflow-hidden shadow rounded-lg"
+              >
+                <div className="aspect-w-16 aspect-h-9">
+                  <img
+                    className="w-full h-48 object-cover"
+                    src="https://source.unsplash.com/random"
+                    alt="Card image"
                   />
-                  <CardContent className={classes.cardContent}>
-                    <Typography gutterBottom variant="h5" component="h2">
-                      Heading
-                    </Typography>
-                    <Typography>
-                      This is a media card. You can use this section to describe
-                      the content.
-                    </Typography>
-                  </CardContent>
-                  <CardActions>
-                    <Button size="small" color="primary">
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-medium text-gray-900 mb-2">
+                    Heading
+                  </h3>
+                  <p className="text-gray-500">
+                    This is a media card. You can use this section to describe
+                    the content.
+                  </p>
+                </div>
+                <div className="px-6 py-4 bg-gray-50 border-t border-gray-200">
+                  <div className="flex space-x-3">
+                    <button className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
                       View
-                    </Button>
-                    <Button size="small" color="primary">
+                    </button>
+                    <button className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
                       Edit
-                    </Button>
-                  </CardActions>
-                </Card>
-              </Grid>
+                    </button>
+                  </div>
+                </div>
+              </div>
             ))}
-          </Grid>
-        </Container>
+          </div>
+        </div>
       </main>
+
       {/* Footer */}
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
+      <footer className="bg-white border-t border-gray-200">
+        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h3 className="text-lg font-medium text-gray-900 mb-4">Footer</h3>
+            <p className="text-gray-500">
+              Something here to give the footer a purpose!
+            </p>
+            <Copyright />
+          </div>
+        </div>
       </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }

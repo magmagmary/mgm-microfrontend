@@ -1,74 +1,5 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardHeader from "@material-ui/core/CardHeader";
-import Grid from "@material-ui/core/Grid";
-import StarIcon from "@material-ui/icons/StarBorder";
-import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
-import { makeStyles } from "@material-ui/core/styles";
-import Container from "@material-ui/core/Container";
-import Box from "@material-ui/core/Box";
-import { Link as RouterLink } from "react-router-dom";
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const useStyles = makeStyles((theme) => ({
-  "@global": {
-    ul: {
-      margin: 0,
-      padding: 0,
-      listStyle: "none",
-    },
-  },
-  toolbar: {
-    flexWrap: "wrap",
-  },
-  toolbarTitle: {
-    flexGrow: 1,
-  },
-  link: {
-    margin: theme.spacing(1, 1.5),
-  },
-  heroContent: {
-    padding: theme.spacing(8, 0, 6),
-  },
-  cardHeader: {
-    backgroundColor:
-      theme.palette.type === "light"
-        ? theme.palette.grey[200]
-        : theme.palette.grey[700],
-  },
-  cardPricing: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "baseline",
-    marginBottom: theme.spacing(2),
-  },
-  footer: {
-    borderTop: `1px solid ${theme.palette.divider}`,
-    marginTop: theme.spacing(8),
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(3),
-    [theme.breakpoints.up("sm")]: {
-      paddingTop: theme.spacing(6),
-      paddingBottom: theme.spacing(6),
-    },
-  },
-}));
+import Copyright from "./Copyright";
 
 const tiers = [
   {
@@ -109,6 +40,7 @@ const tiers = [
     buttonVariant: "outlined",
   },
 ];
+
 const footers = [
   {
     title: "Company",
@@ -140,115 +72,119 @@ const footers = [
 ];
 
 export default function Pricing() {
-  const classes = useStyles();
-
   return (
     <React.Fragment>
       {/* Hero unit */}
-      <Container maxWidth="sm" component="main" className={classes.heroContent}>
-        <Typography
-          component="h1"
-          variant="h2"
-          align="center"
-          color="textPrimary"
-          gutterBottom
-        >
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <h1 className="text-4xl font-bold text-gray-900 sm:text-5xl md:text-6xl mb-4">
           Pricing
-        </Typography>
-        <Typography
-          variant="h5"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
+        </h1>
+        <p className="text-xl text-gray-500 max-w-2xl mx-auto">
           Quickly build an effective pricing table for your potential customers
-          with this layout. It&apos;s built with default Material-UI components
-          with little customization.
-        </Typography>
-      </Container>
-      {/* End hero unit */}
-      <Container maxWidth="md" component="main">
-        <Grid container spacing={5} alignItems="flex-end">
+          with this layout. It&apos;s built with modern design principles and
+          responsive components.
+        </p>
+      </div>
+
+      {/* Pricing Cards */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {tiers.map((tier) => (
-            // Enterprise card is full width at sm breakpoint
-            <Grid
-              item
+            <div
               key={tier.title}
-              xs={12}
-              sm={tier.title === "Enterprise" ? 12 : 6}
-              md={4}
+              className={`relative bg-white rounded-lg shadow-lg overflow-hidden ${
+                tier.title === "Pro" ? "ring-2 ring-indigo-500" : ""
+              }`}
             >
-              <Card>
-                <CardHeader
-                  title={tier.title}
-                  subheader={tier.subheader}
-                  titleTypographyProps={{ align: "center" }}
-                  subheaderTypographyProps={{ align: "center" }}
-                  action={tier.title === "Pro" ? <StarIcon /> : null}
-                  className={classes.cardHeader}
-                />
-                <CardContent>
-                  <div className={classes.cardPricing}>
-                    <Typography component="h2" variant="h3" color="textPrimary">
+              {tier.title === "Pro" && (
+                <div className="absolute top-0 left-0 right-0 bg-indigo-500 text-white text-center py-2 text-sm font-medium">
+                  Most Popular
+                </div>
+              )}
+
+              <div className="p-8">
+                <div className="text-center">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                    {tier.title}
+                  </h3>
+                  {tier.subheader && (
+                    <p className="text-sm text-indigo-600 font-medium mb-4">
+                      {tier.subheader}
+                    </p>
+                  )}
+
+                  <div className="flex items-baseline justify-center mb-8">
+                    <span className="text-5xl font-extrabold text-gray-900">
                       ${tier.price}
-                    </Typography>
-                    <Typography variant="h6" color="textSecondary">
-                      /mo
-                    </Typography>
+                    </span>
+                    <span className="text-xl text-gray-500 ml-1">/mo</span>
                   </div>
-                  <ul>
-                    {tier.description.map((line) => (
-                      <Typography
-                        component="li"
-                        variant="subtitle1"
-                        align="center"
-                        key={line}
+                </div>
+
+                <ul className="space-y-4 mb-8">
+                  {tier.description.map((line) => (
+                    <li key={line} className="flex items-center">
+                      <svg
+                        className="flex-shrink-0 h-5 w-5 text-green-500 mr-3"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
                       >
-                        {line}
-                      </Typography>
-                    ))}
-                  </ul>
-                </CardContent>
-                <CardActions>
-                  <Button
-                    component={RouterLink}
-                    to="/auth/signup"
-                    fullWidth
-                    color="primary"
-                  >
-                    {tier.buttonText}
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
+                        <path
+                          fillRule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                      <span className="text-gray-600">{line}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <button
+                  className={`w-full py-3 px-6 rounded-md font-medium transition-colors ${
+                    tier.buttonVariant === "contained"
+                      ? "bg-indigo-600 text-white hover:bg-indigo-700"
+                      : "border-2 border-indigo-600 text-indigo-600 hover:bg-indigo-50"
+                  }`}
+                >
+                  {tier.buttonText}
+                </button>
+              </div>
+            </div>
           ))}
-        </Grid>
-      </Container>
+        </div>
+      </div>
+
       {/* Footer */}
-      <Container maxWidth="md" component="footer" className={classes.footer}>
-        <Grid container spacing={4} justifyContent="space-evenly">
-          {footers.map((footer) => (
-            <Grid item xs={6} sm={3} key={footer.title}>
-              <Typography variant="h6" color="textPrimary" gutterBottom>
-                {footer.title}
-              </Typography>
-              <ul>
-                {footer.description.map((item) => (
-                  <li key={item}>
-                    <Link href="#" variant="subtitle1" color="textSecondary">
-                      {item}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </Grid>
-          ))}
-        </Grid>
-        <Box mt={5}>
-          <Copyright />
-        </Box>
-      </Container>
-      {/* End footer */}
+      <footer className="bg-gray-50 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
+            {footers.map((footer) => (
+              <div key={footer.title}>
+                <h3 className="text-sm font-semibold text-gray-900 tracking-wider uppercase mb-4">
+                  {footer.title}
+                </h3>
+                <ul className="space-y-2">
+                  {footer.description.map((item) => (
+                    <li key={item}>
+                      <a
+                        href="#"
+                        className="text-gray-600 hover:text-gray-900 text-sm"
+                      >
+                        {item}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-8 pt-8 border-t border-gray-200">
+            <Copyright />
+          </div>
+        </div>
+      </footer>
     </React.Fragment>
   );
 }
