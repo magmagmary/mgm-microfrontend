@@ -4,7 +4,7 @@
         {
             "label": "mgm",
             "type": "shell",
-            "command": "cd Shop/marketing && npm run start & cd ../container && npm run start",
+            "command": "cd marketing && npm run start & cd ../container && npm run start",
             "group": "build"
         },
     ]
