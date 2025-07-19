@@ -3,8 +3,6 @@ import commonConfig from './webpack.common.config.js';
 import packageJson from '../package.json' with { type: 'json' };
 import webpack from 'webpack';
 
-const domain = process.env.PRODUCTION_DOMAIN;
-
 const config ={
     mode:'production',
     output: {
@@ -12,13 +10,10 @@ const config ={
         publicPath: '/container/latest/'
     },
     plugins: [
-        new webpack.DefinePlugin({
-            'process.env.PRODUCTION_DOMAIN': JSON.stringify(process.env.PRODUCTION_DOMAIN),
-        }),
         new webpack.container.ModuleFederationPlugin({
             name: 'container',
             remotes: {
-                marketing: `marketing@/marketing/latest/remoteEntry.js`,
+                marketing: `marketing@${process.env.PRODUCTION_DOMAIN}/marketing/latest/remoteEntry.js`,
             },
             shared: packageJson.dependencies,
         }),
