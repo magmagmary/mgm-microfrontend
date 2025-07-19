@@ -51,7 +51,7 @@ export default function Album() {
                 <div className="aspect-w-16 aspect-h-9">
                   <img
                     className="w-full h-48 object-cover"
-                    src="https://source.unsplash.com/random"
+                    src="https://picsum.photos/400/300?random=${card}"
                     alt="Card image"
                   />
                 </div>
