@@ -12,6 +12,9 @@ const config ={
         publicPath: '/container/latest/'
     },
     plugins: [
+        new webpack.DefinePlugin({
+            'process.env.PRODUCTION_DOMAIN': JSON.stringify(process.env.PRODUCTION_DOMAIN),
+        }),
         new webpack.container.ModuleFederationPlugin({
             name: 'container',
             remotes: {
