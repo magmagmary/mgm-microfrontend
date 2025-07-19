@@ -2,6 +2,7 @@ import { merge } from 'webpack-merge';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import commonConfig from './webpack.common.config.js';
 import webpack from 'webpack';
+import packageJson from '../package.json' with { type: 'json' };
 
 const config ={
     mode:'development',
@@ -23,7 +24,7 @@ const config ={
             exposes: {
                 './MarketingApp': './src/bootstrap.tsx',
             },
-            shared: ['react', 'react-dom'],
+            shared: packageJson.dependencies,
         }),
     ],
 };
