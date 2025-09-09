@@ -5,11 +5,12 @@ import packageJson from '../package.json' with { type: 'json' };
 
 const config ={
     mode:'development',
+    output: {
+        publicPath: 'http://localhost:8000/',
+    },
     devServer: {
         port: 8000,
-        historyApiFallback: {
-            index: 'index.html',
-        },
+        historyApiFallback: true,
         open: true,
     },
     plugins: [
