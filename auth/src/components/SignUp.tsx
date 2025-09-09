@@ -105,7 +105,7 @@ export default function SignUp({ onSignIn }: { onSignIn: () => void }) {
           </div>
 
           <div className="text-center">
-            <Link to="/login" className="font-medium text-indigo-600 hover:text-indigo-500">
+            <Link to="/auth/login" className="font-medium text-indigo-600 hover:text-indigo-500">
               Already have an account? Sign in
             </Link>
           </div>

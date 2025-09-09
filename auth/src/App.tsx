@@ -7,8 +7,8 @@ import type { History } from "history";
 const App = ({history}:{history:History}) => {
   return <Router history={history} >
     <Switch>
-      <Route path="/login" component={Login} />
-      <Route path="/signup" component={SignUp} />
+      <Route path="/auth/login" component={Login} />
+      <Route path="/auth/signup" component={SignUp} />
     </Switch>
   </Router>;
 };

@@ -18,6 +18,7 @@ const config ={
             name: 'container',
             remotes: {
                 marketing: 'marketing@http://localhost:8001/remoteEntry.js',
+                auth: 'auth@http://localhost:8002/remoteEntry.js',
             },
             shared: packageJson.dependencies,
         }),
