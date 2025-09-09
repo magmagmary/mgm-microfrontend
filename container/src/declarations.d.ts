@@ -4,3 +4,8 @@ declare module 'marketing/MarketingApp' {
     };
 }
 
+declare module 'auth/AuthApp' {
+    export function mount(el: HTMLElement , { onNavigate ,onSignIn }: { onNavigate: (location:{pathname:string}) => void ,onSignIn: (value:boolean) => void }): {
+        onParentNavigate: (location:{pathname:string}) => void;
+    };
+}

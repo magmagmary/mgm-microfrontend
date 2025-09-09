@@ -1,16 +1,12 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
-interface HeaderProps {
-  signedIn: boolean;
-  onSignOut?: () => void;
-}
 
-export default function Header({ signedIn, onSignOut }: HeaderProps) {
+export default function Header() {
+  const { signedIn ,setSignedIn } = useAuth();
   const onClick = () => {
-    if (signedIn && onSignOut) {
-      onSignOut();
-    }
+    setSignedIn(false);
   };
 
   return (

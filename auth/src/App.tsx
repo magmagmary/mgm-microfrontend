@@ -4,11 +4,11 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import type { History } from "history";
 
-const App = ({history}:{history:History}) => {
+const App = ({history,onSignIn}:{history:History,onSignIn:(value:boolean) => void}) => {
   return <Router history={history} >
     <Switch>
-      <Route path="/auth/login" component={Login} />
-      <Route path="/auth/signup" component={SignUp} />
+      <Route path="/auth/login" component={()=><Login onSignIn={onSignIn} />} />
+      <Route path="/auth/signup" component={()=><SignUp onSignIn={onSignIn} />} />
     </Switch>
   </Router>;
 };

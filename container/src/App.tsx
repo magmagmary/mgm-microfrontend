@@ -1,16 +1,18 @@
 import { Outlet, RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
 import Header from "./components/Header";
-import { lazy, Suspense } from "react";
+import { createContext, lazy, Suspense, useState } from "react";
 
 const Auth = lazy(() => import("./components/Auth"));
 const Marketing = lazy(() => import("./components/Marketing"));
+
+const AuthContext = createContext<{signedIn:boolean,setSignedIn:(value:boolean) => void} | null>(null);
 
 const router = createBrowserRouter([
   {
     element: (
       <div className="w-svw">
-        <Header signedIn={false} />
+        <Header />
         <Outlet />
       </div>
     ),
@@ -29,7 +31,12 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />;
+  const [signedIn, setSignedIn] = useState(false);
+
+  return <AuthContext.Provider value={{ signedIn, setSignedIn }}>
+    <RouterProvider router={router} />
+  </AuthContext.Provider>;
 };
 
+export { AuthContext };
 export default App;

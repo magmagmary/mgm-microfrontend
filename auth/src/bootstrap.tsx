@@ -3,7 +3,7 @@ import App from "./App";
 import "./assets/styles/index.css";
 import { createBrowserHistory, createMemoryHistory } from "history";
 
-const mount = (el: HTMLElement, { onNavigate ,defaultHistory  }: { onNavigate?:  any ,defaultHistory?:any }) => {
+const mount = (el: HTMLElement, { onNavigate ,defaultHistory ,onSignIn }: { onNavigate?:  any ,defaultHistory?:any ,onSignIn?: (value:boolean) => void }) => {
   const root = createRoot(el);
   const history = defaultHistory || createMemoryHistory();
 
@@ -11,7 +11,7 @@ const mount = (el: HTMLElement, { onNavigate ,defaultHistory  }: { onNavigate?: 
     history.listen(onNavigate);
   }
 
-  root.render(<App history={history} />);
+  root.render(<App history={history} onSignIn={onSignIn} />);
 
   return {
     onParentNavigate({pathname:nextPathname}:{pathname:string}) {
