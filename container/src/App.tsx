@@ -1,8 +1,10 @@
 import { Outlet, RouterProvider } from "react-router-dom";
 import { createBrowserRouter } from "react-router-dom";
-import Marketing from "./components/Marketing";
 import Header from "./components/Header";
-import Auth from "./components/Auth";
+import { lazy, Suspense } from "react";
+
+const Auth = lazy(() => import("./components/Auth"));
+const Marketing = lazy(() => import("./components/Marketing"));
 
 const router = createBrowserRouter([
   {
@@ -15,11 +17,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/*",
-        element: <Marketing />,
+        element: <Suspense fallback={<div>Loading...</div>}><Marketing /></Suspense>,
       },
       {
         path: "/auth/*",
-        element: <Auth />,
+        element: <Suspense fallback={<div>Loading...</div>}><Auth /></Suspense>,
       },
     ],
   },
