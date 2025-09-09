@@ -5,11 +5,13 @@ import packageJson from '../package.json' with { type: 'json' };
 
 const config ={
     mode:'development',
+    output: {
+        filename: '[name].[contenthash].js',
+        publicPath: 'http://localhost:8002/',
+    },
     devServer: {
         port: 8002,
-        historyApiFallback: {
-            index: 'index.html',
-        }, 
+        historyApiFallback: true, 
         open: true,
     },
     plugins: [
