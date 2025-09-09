@@ -1,15 +1,16 @@
-import { RouterProvider } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import { Router } from "react-router";
 import Landing from "./components/Landing";
-import { createBrowserRouter } from "react-router-dom";
 import Pricing from "./components/Pricing";
+import type { History } from "history";
 
-const router = createBrowserRouter([
-  { path: "/", element: <Landing /> },
-  { path: "/pricing", element: <Pricing /> },
-]);
-
-const App = () => {
-  return <RouterProvider router={router} />;
+const App = ({history}:{history:History}) => {
+  return <Router history={history} >
+    <Switch>
+      <Route path="/" exact component={Landing} />
+      <Route path="/pricing"  component={Pricing} />
+    </Switch>
+  </Router>;
 };
 
 export default App;
