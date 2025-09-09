@@ -17,12 +17,13 @@ const router = createBrowserRouter([
         path: "/*",
         element: <Marketing />,
       },
+      {
+        path: "/auth/*",
+        element: <Auth />,
+      },
     ],
   },
-  {
-    path: "/auth/*",
-    element: <Auth />,
-  },
+  
 ]);
 
 const App = () => {
