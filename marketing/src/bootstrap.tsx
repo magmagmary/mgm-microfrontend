@@ -12,6 +12,14 @@ const mount = (el: HTMLElement, { onNavigate ,defaultHistory  }: { onNavigate?: 
   }
 
   root.render(<App history={history} />);
+
+  return {
+    onParentNavigate({pathname:nextPathname}:{pathname:string}) {
+      if (history.pathname !== nextPathname) {
+        history.push(nextPathname);
+      }
+    },
+  }
 };
 
 if (process.env["NODE_ENV"] === "development") {
