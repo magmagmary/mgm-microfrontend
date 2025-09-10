@@ -9,3 +9,7 @@ declare module 'auth/AuthApp' {
         onParentNavigate: (location:{pathname:string}) => void;
     };
 }
+
+declare module 'dashboard/DashboardApp' {
+    export function mount(el: HTMLElement): void;
+}

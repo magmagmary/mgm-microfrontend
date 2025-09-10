@@ -5,6 +5,7 @@ import { createContext, lazy, Suspense, useState } from "react";
 
 const Auth = lazy(() => import("./components/Auth"));
 const Marketing = lazy(() => import("./components/Marketing"));
+const Dashboard = lazy(() => import("./components/Dashboard"));
 
 const AuthContext = createContext<{signedIn:boolean,setSignedIn:(value:boolean) => void} | null>(null);
 
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
         path: "/auth/*",
         element: <Suspense fallback={<div>Loading...</div>}><Auth /></Suspense>,
       },
+      {
+        path: "/dashboard",
+        element: <Suspense fallback={<div>Loading...</div>}><Dashboard /></Suspense>,
+      }
     ],
   },
   
